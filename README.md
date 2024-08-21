@@ -64,7 +64,7 @@ Running the Application
 To start the development server, run:
 python manage.py runserver
 
-Open your web browser and navigate to  http://127.0.0.1:8000/
+Open your web browser and navigate to   http://127.0.0.1:8000/
  to access the application.
 
 Running Tests
