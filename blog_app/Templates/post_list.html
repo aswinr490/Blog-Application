@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+        body {
+            background-image: url('https://cdn.pixabay.com/photo/2015/05/31/10/55/man-791049_1280.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 36px;
+            font-weight: 700;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            background-color: #f8f9fa;
+            padding: 20px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .post-list a {
+            text-decoration: none;
+            font-size: 18px;
+            color: #007bff;
+            font-weight: 500;
+        }
+        .post-list a:hover {
+            text-decoration: underline;
+        }
+        .post-list .date {
+            color: #6c757d;
+            font-size: 14px;
+        }
+        .new-post-btn {
+            display: block;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body style="background-color: #f4f6f7;">
+    <div class="container">
+        <h1>Blog Posts</h1>
+        <div class="new-post-btn">
+            <a href="{% url 'post_create' %}" class="btn btn-primary btn-lg">New Post</a>
+        </div>
+        <ul class="post-list">
+            {% for post in posts %}
+                <li>
+                    <a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a>
+                    <span class="date">{{ post.created_at|date:"F j, Y" }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
